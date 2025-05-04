@@ -1,92 +1,75 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Default light theme */
+    --background: 0 0% 96%;
+    --foreground: 240 10% 4%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 240 10% 4%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 240 10% 4%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 260 84% 51%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 240 5% 96%;
+    --accent-foreground: 240 6% 10%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 240 6% 10%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Theme transition */
+    --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 240 10% 4%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240 10% 4%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 260 84% 51%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 240 4% 16%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 240 5% 84%;
   }
 }
 
@@ -94,8 +77,172 @@
   * {
     @apply border-border;
   }
-
-  body {
-    @apply bg-background text-foreground;
+  
+  html {
+    @apply scroll-smooth;
   }
+  
+  body {
+    @apply bg-background text-foreground font-sans transition-all duration-300 ease-in-out;
+  }
+  
+  /* Apply transition to all elements for theme switching */
+  *, *::before, *::after {
+    transition: var(--theme-transition);
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply container mx-auto px-4 md:px-6 py-16 md:py-24;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-8 text-center font-poppins relative;
+  }
+  
+  .section-title::after {
+    @apply content-[''] absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-20 bg-primary rounded-full;
+  }
+  
+  .skill-button {
+    @apply relative flex flex-col items-center bg-card p-4 rounded-lg shadow-md transition-all duration-300 overflow-hidden border border-border;
+  }
+  
+  .skill-button:hover {
+    @apply transform scale-105 shadow-lg border-primary/50;
+  }
+  
+  .skill-progress {
+    @apply absolute bottom-0 left-0 h-1 bg-primary transition-all duration-300;
+  }
+  
+  .project-card {
+    @apply bg-card rounded-xl overflow-hidden shadow-md border border-border transition-all duration-300;
+  }
+  
+  .project-card:hover {
+    @apply shadow-lg transform -translate-y-1 border-primary/30;
+  }
+  
+  .link-button {
+    @apply px-4 py-2 rounded-md text-sm font-medium transition-all duration-300;
+  }
+  
+  .primary-link-button {
+    @apply link-button bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+  
+  .outline-link-button {
+    @apply link-button border border-primary text-primary hover:bg-primary/10;
+  }
+  
+  .nav-link {
+    @apply px-2 py-1 text-foreground/80 hover:text-foreground transition-colors relative;
+  }
+  
+  .nav-link::after {
+    @apply content-[''] absolute left-0 right-0 bottom-0 h-0.5 bg-primary scale-x-0 transition-transform duration-300 origin-left;
+  }
+  
+  .nav-link:hover::after {
+    @apply scale-x-100;
+  }
+  
+  .nav-link.active {
+    @apply text-primary font-medium;
+  }
+  
+  .nav-link.active::after {
+    @apply scale-x-100;
+  }
+
+  /* Glass card effect */
+  .glass-card {
+    @apply bg-opacity-20 backdrop-blur-md bg-card border border-white/20;
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Theme specific styles */
+.theme-dark {
+  --theme-bg: theme(colors.theme.dark.background);
+  --theme-text: theme(colors.theme.dark.text);
+  --theme-primary: theme(colors.theme.dark.primary);
+  --theme-secondary: theme(colors.theme.dark.secondary);
+  --theme-accent: theme(colors.theme.dark.accent);
+}
+
+.theme-light {
+  --theme-bg: theme(colors.theme.light.background);
+  --theme-text: theme(colors.theme.light.text);
+  --theme-primary: theme(colors.theme.light.primary);
+  --theme-secondary: theme(colors.theme.light.secondary);
+  --theme-accent: theme(colors.theme.light.accent);
+}
+
+.theme-high-contrast {
+  --theme-bg: theme(colors.theme.highContrast.background);
+  --theme-text: theme(colors.theme.highContrast.text);
+  --theme-primary: theme(colors.theme.highContrast.primary);
+  --theme-secondary: theme(colors.theme.highContrast.secondary);
+  --theme-accent: theme(colors.theme.highContrast.accent);
+}
+
+.theme-solarized {
+  --theme-bg: theme(colors.theme.solarized.background);
+  --theme-text: theme(colors.theme.solarized.text);
+  --theme-primary: theme(colors.theme.solarized.primary);
+  --theme-secondary: theme(colors.theme.solarized.secondary);
+  --theme-accent: theme(colors.theme.solarized.accent);
+}
+
+.theme-cyberpunk {
+  --theme-bg: theme(colors.theme.cyberpunk.background);
+  --theme-text: theme(colors.theme.cyberpunk.text);
+  --theme-primary: theme(colors.theme.cyberpunk.primary);
+  --theme-secondary: theme(colors.theme.cyberpunk.secondary);
+  --theme-accent: theme(colors.theme.cyberpunk.accent);
+}
+
+.theme-minimal {
+  --theme-bg: theme(colors.theme.minimal.background);
+  --theme-text: theme(colors.theme.minimal.text);
+  --theme-primary: theme(colors.theme.minimal.primary);
+  --theme-secondary: theme(colors.theme.minimal.secondary);
+  --theme-accent: theme(colors.theme.minimal.accent);
+}
+
+.theme-sepia {
+  --theme-bg: theme(colors.theme.sepia.background);
+  --theme-text: theme(colors.theme.sepia.text);
+  --theme-primary: theme(colors.theme.sepia.primary);
+  --theme-secondary: theme(colors.theme.sepia.secondary);
+  --theme-accent: theme(colors.theme.sepia.accent);
 }
