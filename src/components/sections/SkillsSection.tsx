@@ -2,13 +2,14 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { 
-  Html, 
-  Css, 
-  Javascript, 
-  React as ReactIcon, 
-  Figma, 
+  FileCode, 
+  FileJson, 
+  FileCog, 
+  Code, 
+  Boxes, 
+  GitBranch,
   Github, 
-  Git
+  Figma as FigmaIcon
 } from 'lucide-react';
 
 interface Skill {
@@ -21,25 +22,25 @@ interface Skill {
 const skills: Skill[] = [
   { 
     name: "HTML", 
-    icon: <Html className="w-8 h-8" />, 
+    icon: <FileCode className="w-8 h-8" />, 
     percentage: 95,
     color: "#E34F26" 
   },
   { 
     name: "CSS", 
-    icon: <Css className="w-8 h-8" />, 
+    icon: <FileJson className="w-8 h-8" />, 
     percentage: 90,
     color: "#1572B6" 
   },
   { 
     name: "JavaScript", 
-    icon: <Javascript className="w-8 h-8" />, 
+    icon: <FileCog className="w-8 h-8" />, 
     percentage: 85,
     color: "#F7DF1E" 
   },
   { 
     name: "React", 
-    icon: <ReactIcon className="w-8 h-8" />, 
+    icon: <Code className="w-8 h-8" />, 
     percentage: 80,
     color: "#61DAFB" 
   },
@@ -72,7 +73,7 @@ const skills: Skill[] = [
   },
   { 
     name: "Git", 
-    icon: <Git className="w-8 h-8" />, 
+    icon: <GitBranch className="w-8 h-8" />, 
     percentage: 85,
     color: "#F05032" 
   },
@@ -84,7 +85,7 @@ const skills: Skill[] = [
   },
   { 
     name: "Figma", 
-    icon: <Figma className="w-8 h-8" />, 
+    icon: <FigmaIcon className="w-8 h-8" />, 
     percentage: 80,
     color: "#F24E1E" 
   },
